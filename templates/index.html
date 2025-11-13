@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificador de E-mails - AutoU</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="theme-toggle-container">
+        <button id="themeToggle" class="theme-toggle">
+            <span class="icon-sun">
+                <img src="{{ url_for('static', filename='sun.svg') }}" alt="Icone de tema claro">
+            </span>
+
+            <span class="icon-moon">
+                <img src="{{ url_for('static', filename='night.svg') }}" alt="Icone de tema escuro">
+            </span>
+        </button>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+
+            <div class="image-side">
+                <h2>Otimize sua Gestão de E-mails</h2>
+                <p>Nossa ferramenta classifica automaticamente seus e-mails usando IA para simplificar seu fluxo de
+                    trabalho.</p>
+                <img class="ai-image" src="{{ url_for('static', filename='email-illustration.svg') }}"
+                    alt="Email Illustration">
+            </div>
+
+            <div class="form-side">
+                <div class="form-header">
+                    <img class="logo-autou" src="{{ url_for('static', filename='logo-autou.webp') }}" alt="Logo AutoU">
+                    <h1>Classificador de E-mails</h1>
+                    <p class="form-subtitle">Cole um texto ou envie um arquivo para começar.</p>
+                </div>
+
+                <form id="emailForm">
+                    <label for="textoEmail">Cole o conteúdo do e-mail:</label>
+                    <textarea id="textoEmail" placeholder="Digite ou cole o texto do e-mail aqui..."
+                        rows="6"></textarea>
+
+                    <label for="arquivoEmail">Ou envie um arquivo (.txt ou .pdf):</label>
+                    <input type="file" id="arquivoEmail" accept=".txt,.pdf">
+
+                    <button type="submit">Enviar</button>
+                </form>
+
+                <div id="resultado" class="resultado">
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+# Ambiente virtual
+venv/
+.env
+
+# Arquivos temporários e cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Configurações do sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Arquivos de upload (se não quiser versionar)
+uploads/

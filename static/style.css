@@ -1,0 +1,407 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*GERAL*/
+body {
+    background-color: #f0f4ff;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    transition: background-color 0.3s ease;
+
+    background-image:
+        repeating-linear-gradient(135deg,
+            rgba(255, 129, 26, 0.3) 0,
+            rgba(255, 129, 26, 0.2) 1px,
+            transparent 1px,
+            transparent 30px,
+            rgba(255, 129, 26, 0.3) 30px,
+            rgba(255, 129, 26, 0.2) 2px,
+            transparent 32px,
+            transparent 80px);
+    background-size: 100px 100px;
+    background-attachment: fixed;
+}
+
+/*BOTÃO DE TEMA */
+.theme-toggle-container {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.theme-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background: #1a202c;
+    border: 1px solid #2d3748;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle:hover {
+    background-color: #2d3748;
+    border-color: #4a5568;
+}
+
+/*ESTILOS DO ÍCONE*/
+
+.icon-sun {
+    display: none;
+}
+
+.icon-moon {
+    display: flex;
+}
+
+/*CONTEÚDO PRINCIPAL*/
+.main-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/*CONTAINER*/
+.container {
+    display: flex;
+    align-items: stretch;
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    max-width: 1100px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+/*LADO DA IMAGEM */
+
+.ai-image {
+    filter: drop-shadow(0 0 100px rgb(255, 255, 255));
+}
+
+.image-side {
+    flex: 1;
+    background: linear-gradient(135deg, #fe7f04, #fda105);
+    color: white;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.image-side h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    white-space: nowrap;
+}
+
+.image-side p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.image-side img {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 0 auto;
+}
+
+/*LADO DO FORMULÁRIO*/
+.logo-autou {
+    width: 12rem;
+    height: auto;
+}
+
+.form-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    gap: 1rem;
+}
+
+.form-side {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+}
+
+.form-side h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 8px;
+}
+
+.form-subtitle {
+    font-size: 1.1rem;
+    color: #718096;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+label {
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 0.95rem;
+}
+
+textarea {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e0;
+    resize: vertical;
+    font-size: 1rem;
+    background-color: #f7fafc;
+    transition: 0.3s;
+}
+
+textarea:focus {
+    background-color: #fff;
+    border-color: #4a5dff;
+    box-shadow: 0 0 0 2px rgba(74, 93, 255, 0.2);
+    outline: none;
+}
+
+input[type="file"] {
+    font-size: 0.95rem;
+    color: #4a5568;
+}
+
+
+input[type="file"]::file-selector-button {
+    background-color: #edf2f7;
+    color: #2d3748;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-right: 12px;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #e2e8f0;
+}
+
+
+button {
+    background-color: #f97316;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition-property: all;
+    transition-duration: .15s;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+button:hover {
+    background-color: #7c3aed;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+
+button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/*RESULTADO*/
+.resultado {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f0f4ff;
+    border-left: 5px solid #f97316;
+    color: #333;
+}
+
+.resultado p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.resultado.show {
+    display: block;
+}
+
+.resultado.show {
+    display: block;
+}
+
+/* ======== MODO ESCURO ======== */
+body.dark-mode {
+    background-color: #121212;
+}
+
+body.dark-mode .theme-toggle {
+    background-color: #fffefe;
+    border-color: #ffffff;
+    color: #eee;
+}
+
+body.dark-mode .container {
+    background-color: #1e1e1e;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .form-side {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .form-side h1 {
+    color: #f0f4ff;
+}
+
+body.dark-mode .form-subtitle {
+    color: #a0aec0;
+}
+
+body.dark-mode label {
+    color: #c1c9d4;
+}
+
+body.dark-mode textarea {
+    background-color: #2d3748;
+    border-color: #4a5568;
+    color: #eee;
+}
+
+body.dark-mode textarea:focus {
+    background-color: #1e1e1e;
+    border-color: #667eff;
+}
+
+body.dark-mode input[type="file"] {
+    color: #a0aec0;
+}
+
+body.dark-mode input[type="file"]::file-selector-button {
+    background-color: #2d3748;
+    color: #e2e8f0;
+    border-color: #4a5568;
+}
+
+body.dark-mode input[type="file"]::file-selector-button:hover {
+    background-color: #4a5568;
+}
+
+body.dark-mode .resultado {
+    background-color: #1b2735;
+    border-left-color: #f97316;
+    color: #cccbcb;
+}
+
+body.dark-mode .icon-sun {
+    display: flex;
+}
+
+body.dark-mode .icon-moon {
+    display: none;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1250px) {
+    body {
+        place-items: flex-start;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .container {
+        flex-direction: column;
+        max-width: 600px;
+        margin: 0 auto;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        padding-top: 0;
+    }
+
+    .theme-toggle-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 10;
+    }
+
+    .image-side {
+        padding: 40px 30px 30px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .image-side img {
+        max-width: 280px;
+        margin-top: 20px;
+    }
+
+    .form-side {
+        padding: 40px 30px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    body {
+        padding: 0;
+    }
+
+    .container {
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: 100vh;
+
+    }
+
+
+    .theme-toggle-container {
+        top: 15px;
+        right: 15px;
+    }
+
+    .image-side {
+        padding: 30px 15px 20px;
+
+    }
+
+    .image-side h2 {
+        font-size: 1.6rem;
+        padding-top: 3rem;
+    }
+
+    .form-side {
+        padding: 30px 15px;
+        flex-grow: 1;
+    }
+}
