@@ -5,9 +5,11 @@ from flask import Flask, render_template, request, jsonify
 from google import genai
 from dotenv import load_dotenv
 
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('wordnet')
+for recurso in ['stopwords', 'punkt', 'wordnet']:
+    try:
+        nltk.data.find(f'corpora/{recurso}')
+    except LookupError:
+        nltk.download(recurso, quiet=True)
 
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
