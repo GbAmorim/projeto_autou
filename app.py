@@ -4,15 +4,17 @@ import nltk
 from flask import Flask, render_template, request, jsonify
 from google import genai
 from dotenv import load_dotenv
+from nltk.tokenize.toktok import ToktokTokenizer
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
 
-for recurso in ['stopwords', 'punkt', 'wordnet']:
+
+for recurso in ['stopwords', 'wordnet']:
     try:
         nltk.data.find(f'corpora/{recurso}')
     except LookupError:
         nltk.download(recurso, quiet=True)
 
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
 
 load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
@@ -22,7 +24,6 @@ client = genai.Client(api_key=GEMINI_API_KEY)
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
 
 def preprocessar_texto(texto):
     padroes_remover = [
@@ -42,7 +43,9 @@ def preprocessar_texto(texto):
     texto = re.sub(r"http\S+|www\S+|@\S+|[^a-zA-ZÀ-ÿ\s]", "", texto)
     texto = texto.lower()
 
-    palavras = nltk.word_tokenize(texto, language='portuguese')
+
+    tokenizer = ToktokTokenizer()
+    palavras = tokenizer.tokenize(texto)
 
     stop_words = set(stopwords.words('portuguese'))
     palavras = [p for p in palavras if p not in stop_words]
